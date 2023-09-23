@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+connect() {
+    bluetoothctl connect FC:E8:06:81:39:DE
+}
+
+
+disconnect() {
+    bluetoothctl disconnect FC:E8:06:81:39:DE
+}
+
+
+help() {
+    echo Args: connect, disconnect, help
+}
+
+
+if [ $# -eq 1 ]; then
+    if [ $1 == "connect" ]; then
+        connect
+    elif [ $1 == "disconnect" ]; then
+        disconnect
+	elif [ $1 == "help" ]; then
+		help
+	else
+		echo Unknown argument, use \"help\"
+	fi
+else
+    help
+fi
